@@ -128,3 +128,34 @@ function loopArr() {
 
 }
 export { getSqlValues, getLorem, add, loopArr }
+
+console.log(getLorem());
+
+function setElementVisiable() {
+	if(!getKPIstatusView.data[0]){
+		kpiName1.setVisibility(false)
+		kpi1.setVisibility(false)
+		trend1.setVisibility(false)
+		aop1.setVisibility(false)
+	}else if(!getKPIstatusView.data[1]){
+		kpiName2.setVisibility(false)
+		kpi2.setVisibility(false)
+		trend2.setVisibility(false)
+		aop2.setVisibility(false)
+  }else if(!getKPIstatusView.data[2]){
+		kpiName3.setVisibility(false)
+		kpi3.setVisibility(false)
+		trend3.setVisibility(false)
+		aop3.setVisibility(false)
+  }else if(!getKPIstatusView.data[3]){
+		kpiName4.setVisibility(false)
+		kpi4.setVisibility(false)
+		trend4.setVisibility(false)
+		aop4.setVisibility(false)
+  }else if(!getKPIstatusView.data[4]){
+		kpiName5.setVisibility(false)
+		kpi5.setVisibility(false)
+		trend5.setVisibility(false)
+		aop5.setVisibility(false)
+  }
+}
