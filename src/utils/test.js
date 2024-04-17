@@ -115,7 +115,7 @@ function getLorem() {
   return text
 }
 
-function loopArr(array) {
+function loopArr() {
   const users = [
     { 'user': 'barney', 'age': 36, 'active': true },
     { 'user': 'fred', 'age': 40, 'active': false },
