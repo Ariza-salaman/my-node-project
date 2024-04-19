@@ -128,9 +128,6 @@ function loopArr() {
 
 }
 
-
-console.log(getLorem());
-
 function setElementVisiable() {
   if (!getKPIstatusView.data[0]) {
     kpiName1.setVisibility(false)
@@ -159,5 +156,51 @@ function setElementVisiable() {
     aop5.setVisibility(false)
   }
 }
+function calculatePeriod(statistical_period, yearMonth) {
+  const inputDate = new Date(yearMonth + '-01');
+  const startOfYear = new Date(inputDate.getFullYear(), 11, 1);  // 11是12月
 
-export { getSqlValues, getLorem, add, loopArr, setElementVisiable }
+  if (inputDate.getMonth() < 11) {
+      startOfYear.setFullYear(startOfYear.getFullYear() - 1);
+  }
+
+  const monthsDifference = (inputDate.getFullYear() - startOfYear.getFullYear()) * 12 + (inputDate.getMonth() - startOfYear.getMonth());
+
+  const MONAT = Math.floor((monthsDifference) / statistical_period) + 1;
+
+  const startPeriodDate = new Date(startOfYear.getFullYear(), startOfYear.getMonth() + (MONAT - 1) * statistical_period, 1);
+  const endPeriodDate = new Date(startPeriodDate.getFullYear(), startPeriodDate.getMonth() + statistical_period, 0);
+
+  const formatDate = (date) => {
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+  };
+
+  return {
+      MONAT,
+      startDate: formatDate(startPeriodDate),
+      endDate: formatDate(endPeriodDate)
+  };
+}
+
+function generateValues(data) {
+  const user = 'cheng.zhou';  
+  const filteredData = data.filter(row => 
+                                   Object.values(row).some(value => value !== '' && value !== null)
+                                  );
+  const values = filteredData.map(row => {
+    // 添加额外的字段
+    const extendedRow = {
+      ...row,
+      create_user: user,
+      modify_user: user,
+    };
+    return '(' + Object.values(extendedRow).map(value => `'${value}'`).join(', ') + ')';
+  }).join(',\n');
+
+  return values;
+}
+
+export { getSqlValues, getLorem, add, loopArr, setElementVisiable,generateValues, calculatePeriod }
