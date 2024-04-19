@@ -29,4 +29,4 @@ app.listen(port, () => {
 // console.log(add(5, 3))
 // console.log(getSqlValues());
 console.log(getLorem())
-
+console.log(add(5, 3));
