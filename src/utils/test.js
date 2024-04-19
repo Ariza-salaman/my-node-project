@@ -203,4 +203,63 @@ function generateValues(data) {
   return values;
 }
 
+function isPrime(num) {
+  // 质数必须大于1
+  if (num <= 1) {
+    return false;
+  }
+  // 2和3都是质数
+  if (num === 2 || num === 3) {
+    return true;
+  }
+  // 如果可以被2或3整除，则不是质数
+  if (num % 2 === 0 || num % 3 === 0) {
+    return false;
+  }
+  // 检查除了2和3以外的奇数是否能整除
+  for (let i = 5; i * i <= num; i += 6) {
+    if (num % i === 0 || num % (i + 2) === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+const num = 2 ** 74207281 -1;
+console.log(isPrime(num));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export { getSqlValues, getLorem, add, loopArr, setElementVisiable,generateValues, calculatePeriod }
