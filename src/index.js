@@ -1,9 +1,9 @@
 // index.js
-import express from 'express';
+import express, { json } from 'express';
 import { join } from 'path'; // 为了路径安全性，使用 path.join
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { add, getSqlValues, getLorem, loopArr } from './utils/test.js'
+import JSObject1 from './utils/test.js'
 
 
 
@@ -26,7 +26,4 @@ app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });
 
-// console.log(add(5, 3))
-// console.log(getSqlValues());
-console.log(getLorem())
-console.log(add(5, 3));
+
