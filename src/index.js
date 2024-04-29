@@ -3,7 +3,7 @@ import express, { json } from 'express';
 import { join } from 'path'; // 为了路径安全性，使用 path.join
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import JSObject1 from './utils/test.js'
+import JSObject1 from './utils/functionModules.js';
 
 
 
@@ -25,5 +25,11 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });
+
+const extraFields = JSObject1.extraFields
+
+const data = JSObject1.modelList
+
+console.log(JSObject1.generateValues(data, extraFields));
 
 
