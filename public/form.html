@@ -74,7 +74,7 @@
 </head>
 
 <body>
-  <form action="http://localhost:3000/submit" method="post">
+  <form id="myForm">
     <ul>
       <li>
         <label for="name">Name:</label>
@@ -93,6 +93,24 @@
       </li>
     </ul>
   </form>
+  <div id="responseMessage"></div>
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // 阻止表单默认提交行为
+
+      const formData = new FormData(this); // 创建 FormData 对象
+      console.log(formData);
+      fetch('http://127.0.0.1:3000/submit', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.text()) // 解析响应为文本
+        .then(text => {
+          document.getElementById('responseMessage').innerHTML = `<h1>${text}</h1>`; // 在页面上显示响应
+        })
+        .catch(error => console.error('Error:', error)); // 处理错误
+    });
+  </script>
 </body>
 
 </html>

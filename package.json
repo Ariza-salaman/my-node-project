@@ -11,8 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "lorem-ipsum": "^2.0.8",
-    "uuid": "^5.0.1"
+    "uuid": "^9.0.1"
   }
 }

@@ -1,8 +1,12 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 const PORT = 3000;
+
+// 启用 CORS
+app.use(cors());
 
 // 中间件来解析 POST 请求体中的数据
 app.use(bodyParser.urlencoded({ extended: true }));
