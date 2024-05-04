@@ -70,6 +70,16 @@
       /* 这个外边距的大小与 label 和文本输入框之间的间距差不多 */
       margin-left: 0.5em;
     }
+
+    #responseMessage {
+      margin-top: 50px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 20px;
+      color: #000;
+
+    }
   </style>
 </head>
 
@@ -98,9 +108,33 @@
     document.getElementById('myForm').addEventListener('submit', function (event) {
       event.preventDefault(); // 阻止表单默认提交行为
 
-      const formData = new FormData(this); // 创建 FormData 对象
-      console.log(formData);
-      fetch('http://127.0.0.1:3000/submit', {
+      // 获取输入值
+      const userName = document.getElementById('name').value;
+      const userEmail = document.getElementById('email').value;
+      const userMessage = document.getElementById('message').value;
+
+      // 校验用户名
+      if (!/^[a-zA-Z0-9_]{6,16}$/.test(userName)) {
+        alert('用户名必须是6-16位的字母、数字或下划线！');
+        return;
+      }
+
+      // 校验电子邮件
+      if (!userEmail.endsWith('@unifil.com')) {
+        alert('电子邮件必须以"@unifil.com"结尾！');
+        return;
+      }
+
+      // 过滤敏感词
+      const filteredMessage = userMessage.replace(/fuck/gi, '****');
+
+      // 创建 FormData 对象并手动添加处理后的数据
+      const formData = new FormData();
+      formData.append('user_name', userName);
+      formData.append('user_email', userEmail);
+      formData.append('user_message', filteredMessage);
+
+      fetch('http://localhost:3000/submit', {
         method: 'POST',
         body: formData
       })
