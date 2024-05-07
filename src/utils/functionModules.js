@@ -107,7 +107,6 @@ export default {
       level1Table: buildTable(item, 1) ? [buildTable(item, 1)] : []
     }));
   }
-
 }
 
 
