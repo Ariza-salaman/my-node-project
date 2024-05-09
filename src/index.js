@@ -1,35 +1,20 @@
 // index.js
-import express, { json } from 'express';
-import { join } from 'path'; // 为了路径安全性，使用 path.join
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import JSObject1 from './utils/functionModules.js';
+import JSObject1 from './utils/functionModules.js'
+import _ from './utils/copyLodash.js'
 
+console.log(JSObject1.getLorem(5))
 
+const myArr = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+console.log(_.chunk(myArr, 3))
 
-const app = express();
-const port = 3000;
+const myArr2 = [1, '', 0, 8, null, 5, undefined, 7, NaN, 11]
 
-// 提供静态文件
-app.use(express.static(join(__dirname, '..', 'public')));
+console.log(_.compact(myArr2))
 
-// 如果你想要确保任何路由都返回 index.html，
-// 则可以使用以下路由代替上面的app.get
-app.get('*', (req, res) => {
-    res.sendFile(join(__dirname, '..', 'public', 'index.html'));
-});
+var array = [1]
+var other = _.concat(array, 2, [3], [[4]])
 
-app.listen(port, () => {
-    console.log(`App listening at http://localhost:${port}`);
-});
+console.log(other)
 
-const extraFields = JSObject1.extraFields
-
-const data = JSObject1.modelList
-
-console.log(JSObject1.generateValues(data, extraFields));
-
-
+console.log(_.difference([3, 2, 1], [4, 2]))

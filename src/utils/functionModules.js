@@ -5,7 +5,7 @@ export default {
     return a + b
   },
 
-  getLorem() {
+  getLorem(length) {
     const lorem = new LoremIpsum({
       sentencesPerParagraph: {
         max: 8,
@@ -17,7 +17,7 @@ export default {
       },
     })
 
-    const text = lorem.generateSentences(5)
+    const text = lorem.generateSentences(length)
     return text
   },
   // 对象数组转键值对
@@ -110,5 +110,84 @@ export default {
       failKpiName: item.fail_kpi_name,
       level1Table: buildTable(item, 1) ? [buildTable(item, 1)] : [],
     }))
+  },
+  getSqlValues() {
+    const data = formily1.meta.formData
+    const user = global.user.email.split('@')[0]
+    const year = new Date().getFullYear().toString()
+    const month = (new Date().getMonth() + 1).toString().padStart(2, '0')
+    const department = global.store.userDepart
+    const escapeSqlString = (values) => {
+      if (typeof values === 'string') {
+        return values.replace(/'/g, "''")
+      }
+      return values
+    }
+    function buildValues(
+      data,
+      failIpName,
+      reason_type,
+      parentId = null,
+      level = 1,
+      reasonId = null
+    ) {
+      let values = []
+      data.forEach((item) => {
+        const uuid = item.uuid
+          ? item.uuid
+          : level === 1
+          ? reasonId
+          : UUID.genV4() // 使用平台特定的 UUID 生成函数
+        const isRoot = item.isRoot ? 'TRUE' : 'FALSE'
+        const description = item[`level${level}`].replace(/'/g, "''")
+        const valueString = `('${uuid}','${failIpName}', '${reason_type}',${level}, '${escapeSqlString(
+          description
+        )}', ${
+          parentId ? `'${parentId}'` : 'NULL'
+        }, ${isRoot},'${year}','${month}', '${department}','${user}', '${user}')`
+        values.push(valueString)
+
+        // 处理嵌套表
+        const nextLevelKey = `level${level + 1}Table`
+        if (item[nextLevelKey]) {
+          values = values.concat(
+            buildValues(
+              item[nextLevelKey],
+              failIpName,
+              reason_type,
+              uuid,
+              level + 1,
+              null
+            )
+          )
+        }
+      })
+      return values
+    }
+
+    function generateSQL() {
+      let sqlStatements = []
+      data.reasonCard.forEach((card) => {
+        if (card.level1Table.length === 0) {
+          return
+        }
+        const reasonId = card.uuid ? card.uuid : UUID.genV4() // 使用平台特定的 UUID 生成函数
+        const failIpName = card.failIpName // 获取 failIpName 字段
+        const reason_type = card.reason_type.join(';')
+        const reasonValues = buildValues(
+          card.level1Table,
+          failIpName,
+          reason_type,
+          null,
+          1,
+          reasonId
+        )
+        sqlStatements.push(reasonValues.join(', \n'))
+      })
+      return sqlStatements.join(', \n') // 正确地使用逗号分隔所有 SQL 语句
+    }
+
+    const result = generateSQL()
+    return result
   },
 }

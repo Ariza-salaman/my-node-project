@@ -1,84 +1,232 @@
 {
-  "reasonCard": [
+  "actionPlanCard": [
     {
-      "uuid": "9ad9c9e3-3eb6-49bf-b98d-1645fa08d314",
-      "fail_kpi_name": "fail kpi reason 1",
-      "level": 1,
-      "description": "lorem1",
-      "parentID": null,
-      "isRoot": false
+      "kpi_name": "数据分析综合得分",
+      "Problem_Stage_Table": [
+        {
+          "Problem_Stage": "短期 Short Term (找出问题并停止负面结果 identify Pr & contain): ",
+          "Work_Content": "lorem01",
+          "Work_Description": "lorem01",
+          "Key_Milestone": "lorem01",
+          "Responsible_Person": "lorem01",
+          "Time": "2024-05-09"
+        },
+        {
+          "Problem_Stage": "长期 Long Term (彻底解决问题 thoroughly solve the problem) :",
+          "Work_Content": "lorem01",
+          "Work_Description": "lorem01",
+          "Key_Milestone": "lorem01",
+          "Responsible_Person": "lorem01",
+          "Time": "2024-05-30"
+        },
+        {
+          "Problem_Stage": "再发防止 Recurrence Prevention (确保这种情况不再发生，包括早期通知方法 ensure no recurrence, add early warning signs): ",
+          "Work_Content": "lorem01",
+          "Work_Description": "lorem01",
+          "Key_Milestone": "lorem01",
+          "Responsible_Person": "lorem01",
+          "Time": "2024-05-30"
+        }
+      ],
+      "purpose": "lorem01",
+      "target": "lorem01",
+      "swo": "lorem01",
+      "status": "lorem01",
+      "strategy_description": "lorem01",
+      "capital_requirement": "lorem01",
+      "risk": "lorem01",
+      "human_requirement": "lorem01",
+      "other_requirement": "lorem01",
+      "pre_condition": "lorem01",
+      "requirement_statement": "lorem01"
     },
     {
-      "uuid": "3b45481b-e5a9-4a3a-b9d4-2802952a800e",
-      "fail_kpi_name": "fail kpi reason 1",
-      "level": 2,
-      "description": "lorem2",
-      "parentID": "9ad9c9e3-3eb6-49bf-b98d-1645fa08d314",
-      "isRoot": false
+      "kpi_name": "数据中台综合得分",
+      "Problem_Stage_Table": [
+        {
+          "Problem_Stage": "短期 Short Term (找出问题并停止负面结果 identify Pr & contain): ",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        },
+        {
+          "Problem_Stage": "长期 Long Term (彻底解决问题 thoroughly solve the problem) :",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        },
+        {
+          "Problem_Stage": "再发防止 Recurrence Prevention (确保这种情况不再发生，包括早期通知方法 ensure no recurrence, add early warning signs): ",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        }
+      ]
     },
     {
-      "uuid": "62e575a3-9a5c-4673-94e4-61943459bb93",
-      "fail_kpi_name": "fail kpi reason 1",
-      "level": 3,
-      "description": "lorem3",
-      "parentID": "3b45481b-e5a9-4a3a-b9d4-2802952a800e",
-      "isRoot": false
+      "kpi_name": "数字化能力得分",
+      "Problem_Stage_Table": [
+        {
+          "Problem_Stage": "短期 Short Term (找出问题并停止负面结果 identify Pr & contain): ",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        },
+        {
+          "Problem_Stage": "长期 Long Term (彻底解决问题 thoroughly solve the problem) :",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        },
+        {
+          "Problem_Stage": "再发防止 Recurrence Prevention (确保这种情况不再发生，包括早期通知方法 ensure no recurrence, add early warning signs): ",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        }
+      ]
     },
     {
-      "uuid": "541b54e8-91b2-41c5-b82d-48a9ff722305",
-      "fail_kpi_name": "fail kpi reason 1",
-      "level": 4,
-      "description": "lorem4",
-      "parentID": "62e575a3-9a5c-4673-94e4-61943459bb93",
-      "isRoot": false
+      "kpi_name": "低代码开发平台应用覆盖率",
+      "Problem_Stage_Table": [
+        {
+          "Problem_Stage": "短期 Short Term (找出问题并停止负面结果 identify Pr & contain): ",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        },
+        {
+          "Problem_Stage": "长期 Long Term (彻底解决问题 thoroughly solve the problem) :",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        },
+        {
+          "Problem_Stage": "再发防止 Recurrence Prevention (确保这种情况不再发生，包括早期通知方法 ensure no recurrence, add early warning signs): ",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        }
+      ]
     },
     {
-      "uuid": "fe51a638-8e40-4aca-b375-5897eeca90c0",
-      "fail_kpi_name": "fail kpi reason 1",
-      "level": 5,
-      "description": "lorem5",
-      "parentID": "541b54e8-91b2-41c5-b82d-48a9ff722305",
-      "isRoot": true
+      "kpi_name": "SAP应用深度和操作人员能力提升",
+      "Problem_Stage_Table": [
+        {
+          "Problem_Stage": "短期 Short Term (找出问题并停止负面结果 identify Pr & contain): ",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        },
+        {
+          "Problem_Stage": "长期 Long Term (彻底解决问题 thoroughly solve the problem) :",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        },
+        {
+          "Problem_Stage": "再发防止 Recurrence Prevention (确保这种情况不再发生，包括早期通知方法 ensure no recurrence, add early warning signs): ",
+          "Work_Content": "",
+          "Work_Description": "",
+          "Key_Milestone": "",
+          "Responsible_Person": ""
+        }
+      ]
+    }
+  ],
+  "yearSelect": [
+    {
+      "label": "2023年",
+      "value": "2023"
     },
     {
-      "uuid": "30655bf3-1015-400a-82cb-3b9e279d72ce",
-      "fail_kpi_name": "fail kpi reason 2",
-      "level": 1,
-      "description": "lorem11",
-      "parentID": null,
-      "isRoot": false
+      "label": "2024年",
+      "value": "2024"
     },
     {
-      "uuid": "e9d86587-97a4-4848-8153-c3d31b3bc9ad",
-      "fail_kpi_name": "fail kpi reason 2",
-      "level": 2,
-      "description": "lorem22",
-      "parentID": "30655bf3-1015-400a-82cb-3b9e279d72ce",
-      "isRoot": false
+      "label": "2025年",
+      "value": "2025"
     },
     {
-      "uuid": "0c004535-0225-4cb9-8052-537bb7f480c9",
-      "fail_kpi_name": "fail kpi reason 2",
-      "level": 3,
-      "description": "lorem33",
-      "parentID": "e9d86587-97a4-4848-8153-c3d31b3bc9ad",
-      "isRoot": false
+      "label": "2026年",
+      "value": "2026"
     },
     {
-      "uuid": "eb842975-9997-4b90-849a-7ef42ff6c00d",
-      "fail_kpi_name": "fail kpi reason 2",
-      "level": 4,
-      "description": "lorem44",
-      "parentID": "0c004535-0225-4cb9-8052-537bb7f480c9",
-      "isRoot": false
+      "label": "2027年",
+      "value": "2027"
     },
     {
-      "uuid": "d9124275-0dea-4930-b33c-4fe97d415819",
-      "fail_kpi_name": "fail kpi reason 2",
-      "level": 5,
-      "description": "lorem55",
-      "parentID": "eb842975-9997-4b90-849a-7ef42ff6c00d",
-      "isRoot": true
+      "label": "2028年",
+      "value": "2028"
+    },
+    {
+      "label": "2029年",
+      "value": "2029"
+    },
+    {
+      "label": "2030年",
+      "value": "2030"
+    }
+  ],
+  "monthSelect": [
+    {
+      "label": "1月",
+      "value": "01"
+    },
+    {
+      "label": "2月",
+      "value": "02"
+    },
+    {
+      "label": "3月",
+      "value": "03"
+    },
+    {
+      "label": "4月",
+      "value": "04"
+    },
+    {
+      "label": "5月",
+      "value": "05"
+    },
+    {
+      "label": "6月",
+      "value": "06"
+    },
+    {
+      "label": "7月",
+      "value": "07"
+    },
+    {
+      "label": "8月",
+      "value": "08"
+    },
+    {
+      "label": "9月",
+      "value": "09"
+    },
+    {
+      "label": "10月",
+      "value": "10"
+    },
+    {
+      "label": "11月",
+      "value": "11"
+    },
+    {
+      "label": "12月",
+      "value": "12"
     }
   ]
 }
