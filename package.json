@@ -5,16 +5,26 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js"
+    "start": "node mqtt.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "mqtt"
+  ],
+  "author": "Ariza Salamanca",
   "license": "ISC",
   "dependencies": {
+    "bignumber.js": "^9.1.2",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.11",
+    "dotenv": "^16.4.5",
+    "echarts": "^5.5.0",
     "express": "^4.19.2",
     "lorem-ipsum": "^2.0.8",
+    "mqtt": "^5.6.2",
     "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.9.8",
+    "openai": "^4.47.1",
     "uuid": "^9.0.1"
   }
 }

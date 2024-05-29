@@ -1,150 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Node Form Example</title>
+    <style>
+      form {
+        /* 居中表单 */
+        margin: 0 auto;
+        width: 400px;
+        /* 显示表单的轮廓 */
+        padding: 1em;
+        border: 1px solid #ccc;
+        border-radius: 1em;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <title>Node Form Example</title>
-  <style>
-    form {
-      /* 居中表单 */
-      margin: 0 auto;
-      width: 400px;
-      /* 显示表单的轮廓 */
-      padding: 1em;
-      border: 1px solid #ccc;
-      border-radius: 1em;
-    }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+      form li + li {
+        margin-top: 1em;
+      }
 
-    form li+li {
-      margin-top: 1em;
-    }
+      label {
+        /* 确保所有 label 大小相同并正确对齐 */
+        display: inline-block;
+        width: 90px;
+        text-align: right;
+      }
 
-    label {
-      /* 确保所有 label 大小相同并正确对齐 */
-      display: inline-block;
-      width: 90px;
-      text-align: right;
-    }
-
-    input,
-    textarea {
-      /* 确保所有文本输入框字体相同
+      input,
+      textarea {
+        /* 确保所有文本输入框字体相同
    textarea 默认是等宽字体 */
-      font: 1em sans-serif;
+        font: 1em sans-serif;
 
-      /* 使所有文本输入框大小相同 */
-      width: 300px;
-      box-sizing: border-box;
+        /* 使所有文本输入框大小相同 */
+        width: 300px;
+        box-sizing: border-box;
 
-      /* 调整文本输入框的边框样式 */
-      border: 1px solid #999;
-    }
-
-    input:focus,
-    textarea:focus {
-      /* 给激活的元素一点高亮效果 */
-      border-color: #000;
-    }
-
-    textarea {
-      /* 使多行文本输入框和它们的 label 正确对齐 */
-      vertical-align: top;
-
-      /* 给文本留下足够的空间 */
-      height: 5em;
-    }
-
-    .button {
-      /* 把按钮放到和文本输入框一样的位置 */
-      padding-left: 90px;
-      /* 和 label 的大小一样 */
-    }
-
-    button {
-      /* 这个外边距的大小与 label 和文本输入框之间的间距差不多 */
-      margin-left: 0.5em;
-    }
-
-    #responseMessage {
-      margin-top: 50px;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 20px;
-      color: #000;
-
-    }
-  </style>
-</head>
-
-<body>
-  <form id="myForm">
-    <ul>
-      <li>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="user_name">
-      </li>
-      <li>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="user_email">
-      </li>
-      <li>
-        <label for="message">Message:</label>
-        <textarea id="message" name="user_message"></textarea>
-      </li>
-      <li class="button">
-        <button type="submit">send your message</button>
-      </li>
-    </ul>
-  </form>
-  <div id="responseMessage"></div>
-  <script>
-    document.getElementById('myForm').addEventListener('submit', function (event) {
-      event.preventDefault(); // 阻止表单默认提交行为
-
-      // 获取输入值
-      const userName = document.getElementById('name').value;
-      const userEmail = document.getElementById('email').value;
-      const userMessage = document.getElementById('message').value;
-
-      // 校验用户名
-      if (!/^[a-zA-Z0-9_]{6,16}$/.test(userName)) {
-        alert('用户名必须是6-16位的字母、数字或下划线！');
-        return;
+        /* 调整文本输入框的边框样式 */
+        border: 1px solid #999;
       }
 
-      // 校验电子邮件
-      if (!userEmail.endsWith('@unifil.com')) {
-        alert('电子邮件必须以"@unifil.com"结尾！');
-        return;
+      input:focus,
+      textarea:focus {
+        /* 给激活的元素一点高亮效果 */
+        border-color: #000;
       }
 
-      // 过滤敏感词
-      const filteredMessage = userMessage.replace(/fuck/gi, '****');
+      textarea {
+        /* 使多行文本输入框和它们的 label 正确对齐 */
+        vertical-align: top;
 
-      // 创建 FormData 对象并手动添加处理后的数据
-      const formData = new FormData();
-      formData.append('user_name', userName);
-      formData.append('user_email', userEmail);
-      formData.append('user_message', filteredMessage);
+        /* 给文本留下足够的空间 */
+        height: 5em;
+      }
 
-      fetch('http://localhost:3000/submit', {
-        method: 'POST',
-        body: formData
-      })
-        .then(response => response.text()) // 解析响应为文本
-        .then(text => {
-          document.getElementById('responseMessage').innerHTML = `<h1>${text}</h1>`; // 在页面上显示响应
+      .button {
+        /* 把按钮放到和文本输入框一样的位置 */
+        padding-left: 90px;
+        /* 和 label 的大小一样 */
+      }
+
+      button {
+        /* 这个外边距的大小与 label 和文本输入框之间的间距差不多 */
+        margin-left: 0.5em;
+      }
+
+      #responseMessage {
+        margin-top: 50px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+        color: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="myForm">
+      <ul>
+        <li>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name" />
+        </li>
+        <li>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="user_email" />
+        </li>
+        <li>
+          <label for="message">Message:</label>
+          <textarea id="message" name="user_message"></textarea>
+        </li>
+        <li class="button">
+          <button type="submit">send your message</button>
+        </li>
+      </ul>
+    </form>
+    <div id="responseMessage"></div>
+    <script>
+      document
+        .getElementById('myForm')
+        .addEventListener('submit', function (event) {
+          event.preventDefault() // 阻止表单默认提交行为
+
+          // 获取输入值
+          const userName = document.getElementById('name').value
+          const userEmail = document.getElementById('email').value
+          const userMessage = document.getElementById('message').value
+
+          // 校验用户名
+          if (!/^[a-zA-Z0-9_]{6,16}$/.test(userName)) {
+            alert('用户名必须是6-16位的字母、数字或下划线！')
+            return
+          }
+
+          // 校验电子邮件
+          if (!userEmail.endsWith('@unifil.com')) {
+            alert('电子邮件必须以"@unifil.com"结尾！')
+            return
+          }
+
+          // 过滤敏感词
+          const filteredMessage = userMessage.replace(/fuck/gi, '****')
+
+          // 创建 FormData 对象并手动添加处理后的数据
+          const formData = new FormData()
+          formData.append('user_name', userName)
+          formData.append('user_email', userEmail)
+          formData.append('user_message', filteredMessage)
+
+          fetch('http://localhost:3000/submit', {
+            method: 'POST',
+            body: formData,
+          })
+            .then((response) => response.text()) // 解析响应为文本
+            .then((text) => {
+              document.getElementById(
+                'responseMessage'
+              ).innerHTML = `<h1>${text}</h1>` // 在页面上显示响应
+            })
+            .catch((error) => console.error('Error:', error)) // 处理错误
         })
-        .catch(error => console.error('Error:', error)); // 处理错误
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
